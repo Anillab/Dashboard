@@ -1,6 +1,7 @@
 import React from 'react';
 import {Nav,Form,FormControl,Button, Navbar,Brand,Toggle,Collapse } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { FiBell } from "react-icons/fi";
 
 
 const NavigationBar = (props)=>{
@@ -13,7 +14,8 @@ const NavigationBar = (props)=>{
     <Nav className="mr-auto">
       <Nav.Link href="#home">Contact Us hello@credbook.com</Nav.Link>
       <Nav.Link href="#link">TEL:+2331345761</Nav.Link>
-      
+      <Nav.Link href="#link">< FiBell/></Nav.Link>
+
     </Nav>
     <Form inline>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />

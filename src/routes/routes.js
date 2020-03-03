@@ -29,7 +29,15 @@ const routes = [
     exact:true,
     sidebar: () => <span>Home</span>,
     main: () => <h1>B</h1>
+
   },
+  {
+    path:'/dashboard/logout',
+    exact:true,
+    sidebar: () => <span>Home</span>,
+    main: () => <h1>You're Logged Out</h1>
+
+  }
 ]
 
 const MainRoute = (props) => {
@@ -51,6 +59,11 @@ const MainRoute = (props) => {
         <Link to='/dashboard/b'>
           <ListItem button>
             <ListItemText>Members</ListItemText>
+          </ListItem>
+        </Link>
+        <Link to='/dashboard/logout'>
+          <ListItem button>
+            <ListItemText>Log Out</ListItemText>
           </ListItem>
         </Link>
       </List>
