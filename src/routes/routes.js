@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Dashboard from '../components/Dashboard';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -16,13 +16,13 @@ const routes = [
     path:'/dashboard',
     exact:true,
     sidebar: () => <span>Home</span>,
-    main: Dashboard
+    main: <Dashboard />
   },
   {
     path:'/dashboard/a',
     exact:true,
     sidebar: () => <span>Home</span>,
-    main: () => <h1>A</h1>
+    main: () => <h1>Aaa</h1>
   },
   {
     path:'/dashboard/b',
@@ -36,21 +36,21 @@ const MainRoute = (props) => {
   return (
     <Router>
     <div className='row'>
-    <div className='col-md-4' style={{ overflow: 'scroll', minHeight: '100vh' }}>
+    <div className='col-md-2' style={{ overflow: 'scroll', minHeight: '100vh' }}>
       <List disablePadding dense>
         <Link to='/dashboard'>
           <ListItem button>
-            <ListItemText>Home</ListItemText>
+            <ListItemText>Dashboard</ListItemText>
           </ListItem>
         </Link>
         <Link to='/dashboard/a'>
           <ListItem button>
-            <ListItemText>Home</ListItemText>
+            <ListItemText>Groups</ListItemText>
           </ListItem>
         </Link>
         <Link to='/dashboard/b'>
           <ListItem button>
-            <ListItemText>Home</ListItemText>
+            <ListItemText>Members</ListItemText>
           </ListItem>
         </Link>
       </List>
