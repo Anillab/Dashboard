@@ -15,7 +15,7 @@ import MainRoute from './routes/routes.js'
 const MainHome = props => {
   return (
     <div className='container'>
-    <div className="col-md-8">
+    <div className="col-md-12">
 
      <LoginContainer {...props} />
     </div>

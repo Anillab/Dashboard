@@ -3,6 +3,8 @@ import Dashboard from '../components/Dashboard';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Member from '../components/Members.jsx';
+import Group from '../components/Groups.jsx';
 
 import {
   BrowserRouter as Router,
@@ -19,16 +21,16 @@ const routes = [
     main: <Dashboard />
   },
   {
-    path:'/dashboard/a',
+    path:'/dashboard/groups',
     exact:true,
     sidebar: () => <span>Home</span>,
-    main: () => <h1>Aaa</h1>
+    main: <Group />
   },
   {
-    path:'/dashboard/b',
+    path:'/dashboard/members',
     exact:true,
     sidebar: () => <span>Home</span>,
-    main: () => <h1>B</h1>
+    main: <Member />
 
   },
   {
@@ -51,12 +53,12 @@ const MainRoute = (props) => {
             <ListItemText>Dashboard</ListItemText>
           </ListItem>
         </Link>
-        <Link to='/dashboard/a'>
+        <Link to='/dashboard/groups'>
           <ListItem button>
             <ListItemText>Groups</ListItemText>
           </ListItem>
         </Link>
-        <Link to='/dashboard/b'>
+        <Link to='/dashboard/members'>
           <ListItem button>
             <ListItemText>Members</ListItemText>
           </ListItem>
@@ -69,7 +71,7 @@ const MainRoute = (props) => {
       </List>
     </div>
 
-    <div className='content'>
+    <div className='col-md-10'>
       <Switch>
         {routes.map((route, index) => {
         return  <Route key={index} path={route.path} exact={route.exact} children={route.main}/>
