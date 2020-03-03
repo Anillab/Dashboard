@@ -12,15 +12,17 @@ import {
 // import Dashboard from './components/Dashboard';
 import MainRoute from './routes/routes.js'
 
-const MainHome = props => (
-  <div className='container'>
-  <div className="col-md-8">
+const MainHome = props => {
+  return (
+    <div className='container'>
+    <div className="col-md-8">
 
-   <LoginContainer />
-  </div>
+     <LoginContainer {...props} />
+    </div>
 
- </div>
-)
+   </div>
+  )
+}
 class App extends Component {
   render(){
     return(

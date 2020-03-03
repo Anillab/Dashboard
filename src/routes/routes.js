@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import Dashboard from '../components/Dashboard';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
 import {
   BrowserRouter as Router,
   Route,
   Link,
   Switch
-} from 'react-router-dom';
+} from 'react-router-dom'
 
 const routes = [
   {
@@ -32,27 +36,27 @@ const MainRoute = (props) => {
   return (
     <Router>
     <div className='row'>
-    <div className='col-4'>
-      <ul>
-        <li>
-          <Link to='/dashboard'>
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to='/dashboard/a'>
-            A
-          </Link>
-        </li>
-        <li>
-          <Link to='/dashboard/b'>
-            B
-          </Link>
-        </li>
-      </ul>
+    <div className='col-md-4' style={{ overflow: 'scroll', minHeight: '100vh' }}>
+      <List disablePadding dense>
+        <Link to='/dashboard'>
+          <ListItem button>
+            <ListItemText>Home</ListItemText>
+          </ListItem>
+        </Link>
+        <Link to='/dashboard/a'>
+          <ListItem button>
+            <ListItemText>Home</ListItemText>
+          </ListItem>
+        </Link>
+        <Link to='/dashboard/b'>
+          <ListItem button>
+            <ListItemText>Home</ListItemText>
+          </ListItem>
+        </Link>
+      </List>
     </div>
 
-    <div className='col-8'>
+    <div className='content'>
       <Switch>
         {routes.map((route, index) => {
         return  <Route key={index} path={route.path} exact={route.exact} children={route.main}/>
