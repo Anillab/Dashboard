@@ -11,7 +11,7 @@ import {
   Route,
   Link,
   Switch
-} from 'react-router-dom'
+} from 'react-router-dom';
 
 const routes = [
   {
