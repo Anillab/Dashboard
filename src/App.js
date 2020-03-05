@@ -1,12 +1,10 @@
 import React,{ Component } from 'react';
-import Input from './components/Input.jsx';
 import LoginContainer from './container/LoginContainer.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavigationBar from './components/Navbar.jsx';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch
 } from 'react-router-dom';
 // import Dashboard from './components/Dashboard';
