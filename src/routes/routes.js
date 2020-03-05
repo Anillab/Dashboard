@@ -4,7 +4,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Member from '../components/Members.jsx';
-import Group from '../components/Groups.jsx';
+import InfoGroup from '../constants/groupsApi.js';
 
 import {
   BrowserRouter as Router,
@@ -24,7 +24,7 @@ const routes = [
     path:'/dashboard/groups',
     exact:true,
     sidebar: () => <span>Home</span>,
-    main: <Group />
+    main: <InfoGroup />
   },
   {
     path:'/dashboard/members',
