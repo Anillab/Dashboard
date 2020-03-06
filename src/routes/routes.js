@@ -3,7 +3,7 @@ import Dashboard from '../components/Dashboard';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Member from '../components/Members.jsx';
+import InfoMembers from '../constants/membersApi.jsx';
 import InfoGroup from '../constants/groupsApi.js';
 
 import {
@@ -30,7 +30,7 @@ const routes = [
     path:'/dashboard/members',
     exact:true,
     sidebar: () => <span>Home</span>,
-    main: <Member />
+    main: <InfoMembers />
 
   },
   {

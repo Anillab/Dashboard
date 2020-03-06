@@ -1,31 +1,31 @@
 import React ,{Component} from 'react';
 import axios from 'axios';
-import Group from '../components/Groups.jsx';
+import Member from '../components/Members.jsx';
 import {Table} from 'react-bootstrap';
 
 
-export default class InfoGroup extends Component {
+export default class InfoMembers extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { groupCollection: [] };
+        this.state = { memberCollection: [] };
     }
 
     componentDidMount(){
-      axios.get('https://ff543a0a.ngrok.io/api/groups')
+      axios.get('https://ff543a0a.ngrok.io/api/members')
             .then(res =>{
               console.log(res.data);
-              this.setState({groupCollection:res.data.groups})
+              this.setState({memberCollection:res.data.members})
             })
             .catch(function (error) {
               console.log(error);
             })
     }
 
-    groupTable(){
-      console.log(this.state.groupCollection);
-      return this.state.groupCollection.map((data,i)=>{
-        return <Group obj={data} key={i} />;
+    membersTable(){
+      console.log(this.state.memberCollection);
+      return this.state.memberCollection.map((data,i)=>{
+        return <Member obj={data} key={i} />;
       });
     }
     render(){
@@ -44,7 +44,7 @@ export default class InfoGroup extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.groupTable()}
+            {this.membersTable()}
           </tbody>
         </Table>
       )
