@@ -1,45 +1,46 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 
 class AccountData extends Component {
 
 state = {
     query: '',
     data: [],
-    searchString:[]
+    originalData :[]
 }
 
 handleInputChange = (event) => {
     this.setState({
         query: event.target.value
     },()=>{
-  this.filterArray();
 })
 
 }
 
 getData = () => {
-    fetch('https://ff543a0a.ngrok.io/api/groups')
+    axios('https://68925b41.ngrok.io/api/groups')
     .then(response =>{
-        // console.log(responseData)
+        console.log(response);
         this.setState({
-            data:response.data,
-            searchString:response.data
+            data:response.data.groups,
+            originalData:response.data.groups
         })
     })
 }
 
 filterArray = () => {
     let searchString = this.state.query;
-    let responseData = this.state.data;
+    let data = this.state.originalData;
 
 
 
     if(searchString.length > 0){
-        // console.log(responseData[i].name);
-        responseData = responseData.filter(searchString);
+        data = data.filter(group => group.bankAccount === searchString);
 this.setState({
-   responseData
+   data
 })
+console.log(data);
     }
 
 }
@@ -49,14 +50,16 @@ componentWillMount() {
 render() {
     return (
         <div className="searchForm">
-            <form>
+            <form onSubmit={e => {
+              e.preventDefault();
+              this.filterArray()
+            }}
+            >
                 <input type="text" id="filter" placeholder="Search for..."  onChange={this.handleInputChange}/>
             </form>
                 <div>
                 {
-                    this.state.responseData.map((i) =>
-                        <p>{i.name}</p>
-                    )
+                    this.state.data.map((i) => <p>{i.name}</p>)
                 }
                </div>
         </div>
