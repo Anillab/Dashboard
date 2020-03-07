@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav,Form,FormControl,Button, Navbar,Brand,Toggle} from 'react-bootstrap'
+import {Nav,Button, Navbar,Brand,Toggle} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FiBell } from "react-icons/fi";
 
@@ -17,10 +17,6 @@ const NavigationBar = (props)=>{
       <Nav.Link href="#link">< FiBell/></Nav.Link>
 
     </Nav>
-    <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-success">Search</Button>
-    </Form>
   </Navbar.Collapse>
 </Navbar>
 </>
