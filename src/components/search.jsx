@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Form,Group,Control} from 'react-bootstrap';
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Switch
+} from 'react-router-dom';
 
 class AccountData extends Component {
 
@@ -49,20 +56,39 @@ componentWillMount() {
 }
 render() {
     return (
-        <div className="searchForm">
-            <form onSubmit={e => {
-              e.preventDefault();
-              this.filterArray()
-            }}
-            >
-                <input type="text" id="filter" placeholder="Search for..."  onChange={this.handleInputChange}/>
-            </form>
-                <div>
-                {
-                    this.state.data.map((i) => <p>{i.name}</p>)
-                }
-               </div>
-        </div>
+      <div>
+      <Form onSubmit={e=>{
+        e.preventDefault();
+        this.filterArray()
+      }}
+      >
+
+  <Form.Group controlId="filter">
+
+    <Form.Control type="text" placeholder="Search Group" onChange={this.handleInputChange}/>
+
+  </Form.Group>
+  </Form>
+  <div>
+       {
+        this.state.data.map((i) => <Link>{i.name}</Link>)
+   }
+   </div>
+  </div>
+        // <div className="searchForm">
+        //     <form onSubmit={e => {
+        //       e.preventDefault();
+        //       this.filterArray()
+        //     }}
+        //     >
+        //         <input type="text" id="filter" placeholder="Search for..."  onChange={this.handleInputChange}/>
+        //     </form>
+        //         <div>
+        //         {
+        //             this.state.data.map((i) => <Link>{i.name}</Link>)
+        //         }
+        //        </div>
+        // </div>
     )
   }
 }
