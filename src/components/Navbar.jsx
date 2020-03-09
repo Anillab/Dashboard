@@ -1,5 +1,5 @@
 import React from 'react';
-import {Nav,Button, Navbar,Brand,Toggle} from 'react-bootstrap'
+import {Nav,Button, Navbar,Brand,Toggle} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FiBell } from "react-icons/fi";
 
