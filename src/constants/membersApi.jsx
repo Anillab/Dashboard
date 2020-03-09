@@ -12,7 +12,7 @@ export default class InfoMembers extends Component {
     }
 
     componentDidMount(){
-      axios.get('https://68925b41.ngrok.io/api/members')
+      axios.get('https://ba34bcb8.ngrok.io/api/members')
             .then(res =>{
               console.log(res.data);
               this.setState({memberCollection:res.data.members})
@@ -37,9 +37,8 @@ export default class InfoMembers extends Component {
 
 
 <th> Name</th>
-              <th>Description</th>
-              <th>Account</th>
-              <th>Frequency</th>
+              <th>Phome Number</th>
+              <th>Total Contributions</th>
 
             </tr>
           </thead>
