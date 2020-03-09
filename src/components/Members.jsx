@@ -7,7 +7,7 @@ const Member=(props) =>{
     <tr>
       <th>{props.obj.name}</th>
       <th>{props.obj.phoneNumber}</th>
-      <th>{props.obj.group}</th>
+      <th>{props.obj.contributions.length}</th>
 
 
     </tr>
