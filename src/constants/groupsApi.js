@@ -12,7 +12,7 @@ export default class InfoGroup extends Component {
     }
 
     componentDidMount(){
-      axios.get('https://ba34bcb8.ngrok.io/api/groups')
+      axios.get('https://e83c98e9.ngrok.io/api/groups')
             .then(res =>{
               console.log(res.data);
               this.setState({groupCollection:res.data.groups})
@@ -40,6 +40,8 @@ export default class InfoGroup extends Component {
               <th>Description</th>
               <th>Account</th>
               <th>Total Members</th>
+              <th>Staments</th>
+
 
             </tr>
           </thead>
