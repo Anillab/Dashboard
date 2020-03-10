@@ -12,7 +12,7 @@ export default class InfoMembers extends Component {
     }
 
     componentDidMount(){
-      axios.get('https://ba34bcb8.ngrok.io/api/members')
+      axios.get('https://e83c98e9.ngrok.io/api/members')
             .then(res =>{
               console.log(res.data);
               this.setState({memberCollection:res.data.members})
