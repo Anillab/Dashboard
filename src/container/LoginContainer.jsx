@@ -35,7 +35,7 @@ class LoginContainer extends Component{
        <Input inputType="text"
               title="Instution Code"
               name="code"
-              value="assafasaf"
+              value="BPI-AH"
               // placeholder={'Enter The Instution Code'}
               handleChange={this.handleInput}
 
@@ -44,7 +44,7 @@ class LoginContainer extends Component{
        <Input inputType="password"
               title="Password"
               name="password"
-              value="safafdsgdf"
+              value="*******"
               // placeholder={'Enter  Password'}
               handleChange={this.handlePass}
        /> {/* MFI password*/}
