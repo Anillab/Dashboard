@@ -1,43 +1,33 @@
-import React,{Component} from 'react';
-import {Bar} from 'react-chartjs-2';
+import React from "react";
+import { Doughnut } from "react-chartjs-2";
+import { MDBContainer } from "mdbreact";
 
-const state={
-  labels:[
-    'January', 'February', 'March',
-           'April', 'May'
-  ],
-  datasets: [
-  {
-    label: 'Rainfall',
-    backgroundColor: 'rgba(75,192,192,1)',
-    borderColor: 'rgba(0,0,0,1)',
-    borderWidth: 2,
-    data: [65, 59, 80, 81, 56]
-  }
-]
-}
+class ChartsPage extends React.Component {
+state = {
+  dataDoughnut: {
+    labels: ["Informal", "Formal", "Semi-Formal"],
+    datasets: [
+      {
+        data: [300, 50, 100],
+        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C"],
+        hoverBackgroundColor: [
+          "#FF5A5E",
+          "#5AD3D1",
+          "#FFC870"
 
-class BarChart extends Component {
-  render() {
-    return(
-      <div>
-        <Bar
-          data={state}
-          options={{
-            title:{
-              display:true,
-              text:'Average Rainfall per month',
-              fontSize:20
-            },
-            legend:{
-              display:true,
-              position:'right'
-            }
-          }}
-        />
-      </div>
-    )
+        ]
+      }
+    ]
   }
 }
 
-export default BarChart
+render() {
+    return (
+    <MDBContainer>
+      <Doughnut data={this.state.dataDoughnut} options={{ responsive: true }} />
+    </MDBContainer>
+    );
+  }
+}
+
+export default ChartsPage;
