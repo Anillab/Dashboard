@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  Link
+} from 'react-router-dom';
 
 
 
@@ -8,6 +11,9 @@ const Member=(props) =>{
       <th>{props.obj.name}</th>
       <th>{props.obj.phoneNumber}</th>
       <th>{props.obj.contributions.length}</th>
+      <Link to='/memberStatement'>
+      <th>{'statement'}</th>
+      </Link>
 
 
     </tr>
