@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Form,Group,Control} from 'react-bootstrap';
+
+
+
+
+import {Form} from 'react-bootstrap';
 
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
+  Link
 } from 'react-router-dom';
 
 class AccountData extends Component {
@@ -26,11 +27,11 @@ handleInputChange = (event) => {
 }
 
 getData = () => {
-    axios('https://68925b41.ngrok.io/api/groups')
+    axios('https://hidden-atoll-66913.herokuapp.com/api/groups')
     .then(response =>{
         console.log(response);
         this.setState({
-            data:response.data.groups,
+            // data:response.data.groups,
             originalData:response.data.groups
         })
     })
@@ -38,12 +39,12 @@ getData = () => {
 
 filterArray = () => {
     let searchString = this.state.query;
-    let data = this.state.originalData;
+    // let data = this.state.originalData;
 
 
 
     if(searchString.length > 0){
-        data = data.filter(group => group.bankAccount === searchString);
+      const  data = this.state.originalData.filter(group => group.bankAccount === searchString);
 this.setState({
    data
 })
@@ -57,6 +58,7 @@ componentWillMount() {
 render() {
     return (
       <div>
+      <row>
       <Form onSubmit={e=>{
         e.preventDefault();
         this.filterArray()
@@ -67,28 +69,19 @@ render() {
 
     <Form.Control type="text" placeholder="Search Group" onChange={this.handleInputChange}/>
 
-  </Form.Group>
+    </Form.Group>
+
+    <ul style={{listStyle: 'none'}}>
+
+         {
+          this.state.data.map((i) => <li><Link>{i.name}</Link></li>)
+     }
+     </ul>
   </Form>
-  <div>
-       {
-        this.state.data.map((i) => <Link>{i.name}</Link>)
-   }
-   </div>
+  </row>
+
   </div>
-        // <div className="searchForm">
-        //     <form onSubmit={e => {
-        //       e.preventDefault();
-        //       this.filterArray()
-        //     }}
-        //     >
-        //         <input type="text" id="filter" placeholder="Search for..."  onChange={this.handleInputChange}/>
-        //     </form>
-        //         <div>
-        //         {
-        //             this.state.data.map((i) => <Link>{i.name}</Link>)
-        //         }
-        //        </div>
-        // </div>
+
     )
   }
 }
