@@ -25,7 +25,8 @@ class LoginContainer extends Component{
     //       console.log("Successful" + data);
     //     })
     // })
-    this.props.history.push('/dash')
+    console.log(this.props);
+    this.props.history.push('/dashboard')
   }
 
   render(){
@@ -51,7 +52,7 @@ class LoginContainer extends Component{
        <Button
          action={this.handleFormSubmit}
          type={'primary'}
-         title={'Submit'}
+         title={'Login'}
          style={buttonStyle}
         />{/* Submit*/}
 
