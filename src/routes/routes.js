@@ -5,9 +5,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import InfoMembers from '../constants/membersApi.jsx';
 import InfoGroup from '../constants/groupsApi.js';
-import LoginContainer from '../container/LoginContainer.jsx';
-import GroupStatement from '../components/GroupStatement.jsx'
-
+import GroupStatement from '../components/GroupStatement.jsx';
+import MemberStatement from '../components/MemberStatement.jsx';
+import Notification from '../components/Notifications.jsx';
 import {
   BrowserRouter as Router,
   Route,
@@ -36,16 +36,27 @@ const routes = [
 
   },
   {
-    path:'/dashboard/logout',
+    path:'/logout',
     exact:true,
     sidebar: () => <span>Home</span>,
-    main: <LoginContainer />
 
   },
   {
     path:'/groupStatement',
     exact:true,
     main: <GroupStatement />
+
+  },
+  {
+    path:'/notification',
+    exact:true,
+    main: <Notification />
+
+  },
+  {
+    path:'/memberStatement',
+    exact:true,
+    main: <MemberStatement />
 
   }
 ]
@@ -71,7 +82,7 @@ const MainRoute = (props) => {
             <ListItemText>Members</ListItemText>
           </ListItem>
         </Link>
-        <Link to='/dashboard/logout'>
+        <Link to='/'>
           <ListItem button>
             <ListItemText>Log Out</ListItemText>
           </ListItem>
