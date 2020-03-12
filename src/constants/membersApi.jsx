@@ -12,7 +12,7 @@ export default class InfoMembers extends Component {
     }
 
     componentDidMount(){
-      axios.get('https://e83c98e9.ngrok.io/api/members')
+      axios.get('https://hidden-atoll-66913.herokuapp.com/api/members')
             .then(res =>{
               console.log(res.data);
               this.setState({memberCollection:res.data.members})
@@ -39,6 +39,8 @@ export default class InfoMembers extends Component {
 <th> Name</th>
               <th>Phome Number</th>
               <th>Total Contributions</th>
+              <th>statement</th>
+
 
             </tr>
           </thead>
