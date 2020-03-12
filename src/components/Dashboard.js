@@ -1,27 +1,13 @@
 
 import React, { Component } from "react";
-import ChartistGraph from "react-chartist";
 import { Container, Row, Col } from "react-bootstrap";
 import { Card } from "./Card.jsx";
 import { StatsCard } from "./StatsCard.jsx";
-import { Tasks } from "./Task.jsx";
 import AccountData from './search.jsx';
 import ChartsPage from './BarChart.jsx';
 import LinePage from './LineChart.jsx';
 import VerticalPage from './VerticalBar.jsx';
 
-import {
-  dataPie,
-  legendPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  legendSales,
-  dataBar,
-  optionsBar,
-  responsiveBar,
-  legendBar
-} from "./variables.jsx";
 
 class Dashboard extends Component {
   createLegend(json) {
@@ -50,7 +36,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-server text-warning" />}
                 statsText="Total Number of Groups"
-                statsValue="24"
+                statsValue="6"
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated 5 Days Ago"
               />
@@ -58,8 +44,8 @@ class Dashboard extends Component {
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-success" />}
-                statsText="Total Contribution"
-                statsValue="GHC 12000"
+                statsText="Total Contributions"
+                statsValue="1200"
                 statsIcon={<i className="fa fa-calendar-o" />}
                 statsIconText="Updated 6 Hours Ago"
               />
@@ -67,17 +53,17 @@ class Dashboard extends Component {
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-graph1 text-danger" />}
-                statsText="Errors"
-                statsValue="23"
+                statsText="Growth Rate Monthly"
+                statsValue="3%"
                 statsIcon={<i className="fa fa-clock-o" />}
-                statsIconText="In the last hour"
+                statsIconText="In the last month"
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="fa fa-twitter text-info" />}
-                statsText="Loan Requeets"
-                statsValue="45"
+                statsText="Loan Requests"
+                statsValue="15"
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated 2 days Ago"
               />
@@ -121,8 +107,8 @@ class Dashboard extends Component {
             <Col md={12}>
               <Card
                 id="chartActivity"
-                title="2014 Sales"
-                category="All products including Taxes"
+                title="2020 Group Contribution"
+                category="Group Types"
                 stats="Data information certified"
                 statsIcon="fa fa-check"
                 content={
