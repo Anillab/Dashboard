@@ -34,7 +34,7 @@ class App extends Component {
         <NavigationBar />
        <Switch>
        <Route path='/' exact component={MainHome}/>
-        <Route path='/dash' component={MainRoute}/>
+        <Route path='/dashboard' component={MainRoute}/>
        </Switch>
      </Router>
      </>
