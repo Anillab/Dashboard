@@ -7,7 +7,7 @@ import AccountData from './search.jsx';
 import ChartsPage from './BarChart.jsx';
 import LinePage from './LineChart.jsx';
 import VerticalPage from './VerticalBar.jsx';
-
+import Notification from './Notifications.jsx';
 
 class Dashboard extends Component {
   createLegend(json) {
@@ -36,7 +36,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-server text-warning" />}
                 statsText="Total Number of Groups"
-                statsValue="6"
+                statsValue="8"
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated 5 Days Ago"
               />
@@ -62,8 +62,8 @@ class Dashboard extends Component {
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="fa fa-twitter text-info" />}
-                statsText="Loan Requests"
-                statsValue="15"
+                statsText="Pending Statements"
+                statsValue="6"
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated 2 days Ago"
               />
