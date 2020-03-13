@@ -48,11 +48,12 @@ const routes = [
 
   },
   {
-    path:'/notification',
+    path:'/notifications',
     exact:true,
+    sidebar: () => <span>Home</span>,
     main: <Notification />
-
   },
+
   {
     path:'/memberStatement',
     exact:true,
@@ -80,6 +81,11 @@ const MainRoute = (props) => {
         <Link to='/dashboard/members'>
           <ListItem button>
             <ListItemText>Members</ListItemText>
+          </ListItem>
+        </Link>
+        <Link to='/notifications'>
+          <ListItem button>
+            <ListItemText>Notifications</ListItemText>
           </ListItem>
         </Link>
         <Link to='/'>

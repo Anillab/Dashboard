@@ -1,10 +1,8 @@
 import React from 'react';
 import {Nav, Navbar} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FiBell } from "react-icons/fi";
 import Credbook from "../assets/Credbook.png";
 import Image from 'react-render-image';
-import { Link } from 'react-router-dom';
 
 const NavigationBar = (props)=>{
   return(
@@ -22,9 +20,8 @@ const NavigationBar = (props)=>{
     <Nav className="mr-auto">
       <Nav.Link href="#home">Contact Us hello@credbook.com</Nav.Link>
       <Nav.Link href="#link">TEL:+2331345761</Nav.Link>
-      <Link to='/notification'>
-      <Nav.Link>< FiBell/></Nav.Link>
-      </Link>
+
+
     </Nav>
   </Navbar.Collapse>
 </Navbar>

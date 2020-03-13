@@ -1,12 +1,14 @@
 import React from 'react';
+
 import {
-  Link,
+  Link
 } from 'react-router-dom';
 
 
 
 const Group=(props) =>{
   return(
+
     <tr>
       <th>{props.obj.name}</th>
       <th>{props.obj.description}</th>
@@ -19,6 +21,7 @@ const Group=(props) =>{
 
 
     </tr>
+
 )
 }
 export default Group;

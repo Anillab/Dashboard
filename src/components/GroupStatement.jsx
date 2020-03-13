@@ -7,7 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import Behavior from './Behaivour.jsx';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -32,6 +32,8 @@ export default function SimpleTable() {
   const classes = useStyles();
 
   return (
+    <div>
+    <div>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
@@ -54,5 +56,10 @@ export default function SimpleTable() {
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
+    <div>
+    <Behavior />
+    </div>
+    </div>
   );
 }
