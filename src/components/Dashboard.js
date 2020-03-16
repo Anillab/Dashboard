@@ -8,8 +8,28 @@ import ChartsPage from './BarChart.jsx';
 import LinePage from './LineChart.jsx';
 import VerticalPage from './VerticalBar.jsx';
 import Notification from './Notifications.jsx';
+import axios from 'axios';
+
+
 
 class Dashboard extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      group:[]
+    }
+  }
+  componentDidMount(){
+    axios.get('https://hidden-atoll-66913.herokuapp.com/api/groups')
+          .then(res =>{
+            console.log(res.data);
+            this.setState({group:res.data.groups})
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+  }
+
   createLegend(json) {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -36,18 +56,18 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-server text-warning" />}
                 statsText="Total Number of Groups"
-                statsValue="8"
+                statsValue={this.state.group.length !== 0 ? this.state.group.length : 0}
                 statsIcon={<i className="fa fa-refresh" />}
-                statsIconText="Updated 5 Days Ago"
+                statsIconText={this.state.group.length !== 0 ? new Date(this.state.group[this.state.group.length - 1].updatedAt).toDateString() : 'No recent update' }
               />
             </Col>
             <Col lg={3} sm={6}>
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-success" />}
                 statsText="Total Contributions"
-                statsValue="1200"
+                statsValue={this.state.group.map(group => group.contributions.length * group.amount).reduce((acc, cv) => (acc + cv), 0)}
                 statsIcon={<i className="fa fa-calendar-o" />}
-                statsIconText="Updated 6 Hours Ago"
+                statsIconText={this.state.group.length !== 0 ? new Date(this.state.group[this.state.group.length - 1].updatedAt).toDateString() : 'No recent update' }
               />
             </Col>
             <Col lg={3} sm={6}>
