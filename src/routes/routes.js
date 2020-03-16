@@ -8,6 +8,8 @@ import InfoGroup from '../constants/groupsApi.js';
 import GroupStatement from '../components/GroupStatement.jsx';
 import MemberStatement from '../components/MemberStatement.jsx';
 import Notification from '../components/Notifications.jsx';
+import DetailGroup from '../constants/groupInfo.jsx';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -27,6 +29,10 @@ const routes = [
     exact:true,
     sidebar: () => <span>Home</span>,
     main: <InfoGroup />
+  },
+  {
+    path:'/dashboard/groups/:id',
+    main: <DetailGroup/>
   },
   {
     path:'/dashboard/members',
@@ -99,7 +105,7 @@ const MainRoute = (props) => {
     <div className='col-md-10'>
       <Switch>
         {routes.map((route, index) => {
-        return  <Route key={index} path={route.path} exact={route.exact} children={route.main}/>
+        return  <Route key={index} path={route.path} exact={route.exact} children={route.main} {...props}/>
         })}
       </Switch>
     </div>
