@@ -1,13 +1,14 @@
 import React from 'react';
 import {
-  Link
+  Link,useHistory
 } from 'react-router-dom';
 
 
 
 const Member=(props) =>{
+  let history = useHistory();
   return(
-    <tr>
+    <tr onClick={() => history.push(`/dashboard/members/${props.obj._id}`)}>
       <th>{props.obj.name}</th>
       <th>{props.obj.phoneNumber}</th>
       <th>{props.obj.contributions.length}</th>
