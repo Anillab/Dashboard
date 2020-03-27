@@ -14,7 +14,6 @@ export default class InfoMembers extends Component {
     componentDidMount(){
       axios.get('https://hidden-atoll-66913.herokuapp.com/api/members')
             .then(res =>{
-              console.log(res.data);
               this.setState({memberCollection:res.data.members})
             })
             .catch(function (error) {
@@ -23,7 +22,6 @@ export default class InfoMembers extends Component {
     }
 
     membersTable(){
-      console.log(this.state.memberCollection);
       return this.state.memberCollection.map((data,i)=>{
         return <Member obj={data} key={i} />;
       });
