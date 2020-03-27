@@ -11,7 +11,7 @@ const NavigationBar = (props)=>{
   <Navbar.Brand>
   <Image src={Credbook}>
    {({image})=>{
-     return <img src={Credbook} width={'200px'} height={'75px'} alt={Credbook}/>;
+     return <img src={Credbook} width={'200px'} height={'90px'} alt={Credbook}/>;
    }}
   </Image>
   </Navbar.Brand>
