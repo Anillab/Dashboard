@@ -10,20 +10,27 @@ import VerticalPage from './VerticalBar.jsx';
 import Notification from './Notifications.jsx';
 import axios from 'axios';
 
+const API_URL='https://hidden-atoll-66913.herokuapp.com/api';
 
 
 class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state={
-      group:[]
+      group:[],
+      contribution:[]
     }
   }
+
   componentDidMount(){
-    axios.get('https://hidden-atoll-66913.herokuapp.com/api/groups')
+    axios.get(`${API_URL}/groups`)
           .then(res =>{
             console.log(res.data);
             this.setState({group:res.data.groups})
+            return axios.get(`${API_URL}/contributions`)
+          })
+          .then((res)=>{
+            this.setState({contribution:res.data.contributions})
           })
           .catch(function (error) {
             console.log(error);
@@ -65,7 +72,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-wallet text-success" />}
                 statsText="Total Contributions"
-                statsValue={this.state.group.map(group => group.contributions.length * group.amount).reduce((acc, cv) => (acc + cv), 0)}
+                statsValue={this.state.contribution.map(contribution => contribution.members.length * contribution.amount).reduce((acc, cv) => (acc + cv), 0)}
                 statsIcon={<i className="fa fa-calendar-o" />}
                 statsIconText={this.state.group.length !== 0 ? new Date(this.state.group[this.state.group.length - 1].updatedAt).toDateString() : 'No recent update' }
               />
