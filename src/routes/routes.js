@@ -9,6 +9,7 @@ import GroupStatement from '../components/GroupStatement.jsx';
 import MemberStatement from '../components/MemberStatement.jsx';
 import Notification from '../components/Notifications.jsx';
 import DetailGroup from '../constants/groupInfo.jsx';
+import DetailMembers from '../components/membersInfo.jsx';
 
 import {
   BrowserRouter as Router,
@@ -39,6 +40,12 @@ const routes = [
     exact:true,
     sidebar: () => <span>Home</span>,
     main: <InfoMembers />
+
+  },
+  {
+    path:'/dashboard/members/:id',
+    sidebar: () => <span>Home</span>,
+    main: <DetailMembers />
 
   },
   {
