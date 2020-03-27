@@ -11,14 +11,12 @@ const Each=(props) =>{
   return(
     <tr>
       <th>{props.obj.name}</th>
-      <th>{props.obj.description}</th>
-      <th>{props.obj.bankAccount}</th>
-      <th>{props.obj.frequency}</th>
-      <th>{Array.isArray(props.obj.members) ? props.obj.members.length : 0}</th>
+      <td>{props.obj.phoneNumber}</td>
+      <td>{Array.isArray(props.obj.contributions) ? props.obj.contributions.length : 0}</td>
 
-      <Link to='/groupStatement'>
-      <th>{'statement'}</th>
-      </Link>
+
+      <td><Link to='/groupStatement'>{'statement'}</Link></td>
+
     </tr>
 
 )
