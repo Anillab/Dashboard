@@ -17,9 +17,7 @@ const Group=(props) =>{
       <th>{props.obj.frequency}</th>
       <th>{props.obj.members.length}</th>
 
-      <Link to='/groupStatement'>
-      <th>{'statement'}</th>
-      </Link>
+      
 
     </tr>
 
