@@ -6,6 +6,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InfoMembers from '../constants/membersApi.jsx';
 import InfoGroup from '../constants/groupsApi.js';
 import GroupStatement from '../components/GroupStatement.jsx';
+import SimpleTable from '../components/GroupStatement.jsx';
 import MemberStatement from '../components/MemberStatement.jsx';
 import Notification from '../components/Notifications.jsx';
 import DetailGroup from '../constants/groupInfo.jsx';
@@ -61,6 +62,11 @@ const routes = [
 
   },
   {
+    path:'/groupStatement/:id',
+    main: <SimpleTable />
+
+  },
+  {
     path:'/notifications',
     exact:true,
     sidebar: () => <span>Home</span>,
@@ -112,7 +118,7 @@ const MainRoute = (props) => {
     <div className='col-md-10'>
       <Switch>
         {routes.map((route, index) => {
-        return  <Route key={index} path={route.path} exact={route.exact} children={route.main} {...props}/>
+        return  <Route key={index} path={route.path} exact={route.exact} children={route.main} {...props} />
         })}
       </Switch>
     </div>
