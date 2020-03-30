@@ -4,6 +4,10 @@ import {useParams} from 'react-router-dom';
 import Each from '../components/groupEach.jsx';
 import {Table, Card, Spinner} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  Link
+} from 'react-router-dom';
+
 
 const API_URL='https://hidden-atoll-66913.herokuapp.com/api';
 
@@ -56,6 +60,10 @@ const DetailGroup = () => {
         <Card.Body>
           {groupDetails.description}
         </Card.Body>
+        <Card.Header>
+        <p><Link to={`/groupStatement/${groupDetails._id}`}>{'statement'}</Link></p>
+
+        </Card.Header>
       </Card>
 
       <Table striped bordered hover>
@@ -66,7 +74,7 @@ const DetailGroup = () => {
          </td>
         </tr>
           <tr>
-          
+
             <th> Name</th>
             <th>Phone Number</th>
             <th>Total Contribution</th>
