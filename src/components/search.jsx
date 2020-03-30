@@ -74,7 +74,7 @@ render() {
     <ul style={{listStyle: 'none'}}>
 
          {
-          this.state.data.map((i) => <li><Link>{i.name}</Link></li>)
+          this.state.data.map((i) => <li><Link to={`/dashboard/groups/${i._id}`}>{i.name}</Link></li>)
      }
      </ul>
   </Form>
