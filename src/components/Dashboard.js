@@ -134,9 +134,7 @@ class Dashboard extends Component {
             <Col md={12}>
               <Card
                 id="chartActivity"
-                title="2020 Group Contribution"
-                category="Group Types"
-                stats="Data information certified"
+                title="Group Base Contribution"
                 statsIcon="fa fa-check"
                 content={
                   <div className="ct-chart">
