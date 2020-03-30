@@ -41,7 +41,6 @@ export default class InfoGroup extends Component {
               <th> Bank Account</th>
               <th>Contribution Frequency</th>
               <th>Total Members</th>
-              <th>Staments</th>
 
 
             </tr>
