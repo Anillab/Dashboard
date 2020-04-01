@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import {useParams} from 'react-router-dom'
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
@@ -17,73 +18,82 @@ const useStyles = makeStyles({
   },
 });
 
-class SimpleTable extends React.Component{
-constructor(props){
-  super(props);
-  this.state={
-    group:{},
-    contribution:[]
-  }
+const SimpleTable = () => {
+  const [group, setGroup] = useState({});
+  const [contributions, setContribution] = useState([])
 
-}
-componentDidMount(){
-  if(this.props !== null){
-      console.log(this.props);
-  }
+  let {id} = useParams();
 
-
-  let groupId = this.props.match.params.id;
-  axios.get(`${API_URL}/groups/${groupId}`)
-      .then(res=>{
-        this.setState({group: res.data}, () => {
-          this.state.group.contributions.map(value => {
-            return axios.get(`${API_URL}/contributions/${value._id}`)
+  useEffect(() => {
+    const fetchGroup = () => {
+      axios.get(`${API_URL}/groups/${id}`)
+          .then(res => {
+            console.log(res.data);
+            return setGroup({...group, ...res.data.group});
+          }).catch(function (error){
+            console.log(error);
           })
-        })
-      })
-      .then(resData => {
-        this.setState({contribution: [...this.state.contribution, resData.data]})
-      })
-      .catch(function (error){
-        console.log(error);
-      })
-}
+    }
 
-render(){
-  console.log(this.props);
-return (
-  <div>
-  <div>
-  <TableContainer component={Paper}>
-    <Table  aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          <TableCell>Date of Contribution</TableCell>
-          <TableCell align="right">Title of Contribution</TableCell>
-          <TableCell align="right">Members Contributed</TableCell>
-          <TableCell align="right">Amount Contributed</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {this.state.contribution.map(contribution => (
-          <TableRow key={contribution.title}>
-            <TableCell component="th" scope="row">
-            a
-            </TableCell>
-            <TableCell align="right">a</TableCell>
-            <TableCell align="right">a</TableCell>
+    fetchGroup();
+
+  }, [])
+
+  useEffect(() => {
+
+    const fetchContributions = async id => {
+      try{
+
+        const res = await axios.get(`${API_URL}/contributions/${id}`)
+        console.log(res.data.contribution)
+        return res.data.contribution;
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+    if(group.contributions){
+      Promise.all(group.contributions.map(element => fetchContributions(element))).then(res => {
+        setContribution([...contributions, res])
+      }).catch(err => console.log(err))
+    }
+
+  }, [group])
+
+  console.log(group)
+  console.log('--state value--', contributions)
+  return (
+    <div>
+    <div>
+    <TableContainer component={Paper}>
+      <Table  aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            <TableCell>Date of Contribution</TableCell>
+            <TableCell align="right">Title of Contribution</TableCell>
+            <TableCell align="right">Members Contributed</TableCell>
+            <TableCell align="right">Amount Contributed</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-  </div>
-  <div>
-  <Behavior />
-  </div>
-  </div>
-)};
+        </TableHead>
+        <TableBody>
+            <TableRow>
+              <TableCell component="th" scope="row">
+              a
+              </TableCell>
+              <TableCell align="right">a</TableCell>
+              <TableCell align="right">a</TableCell>
+            </TableRow>
 
-}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </div>
+    <div>
+    <Behavior />
+    </div>
+    </div>
+  );
+
+};
 
 export default SimpleTable;
