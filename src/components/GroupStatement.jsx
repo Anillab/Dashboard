@@ -9,7 +9,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Behavior from './Behaivour.jsx';
 const API_URL='https://hidden-atoll-66913.herokuapp.com/api';
 
 const useStyles = makeStyles({
@@ -54,7 +53,8 @@ const SimpleTable = () => {
 
     if(group.contributions){
       Promise.all(group.contributions.map(element => fetchContributions(element))).then(res => {
-        setContribution([...contributions, res])
+        console.log('this is res value:', res)
+        setContribution([...contributions, ...res])
       }).catch(err => console.log(err))
     }
 
@@ -62,37 +62,54 @@ const SimpleTable = () => {
 
   console.log(group)
   console.log('--state value--', contributions)
-  return (
-    <div>
-    <div>
-    <TableContainer component={Paper}>
-      <Table  aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Date of Contribution</TableCell>
-            <TableCell align="right">Title of Contribution</TableCell>
-            <TableCell align="right">Members Contributed</TableCell>
-            <TableCell align="right">Amount Contributed</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-            <TableRow>
-              <TableCell component="th" scope="row">
-              a
-              </TableCell>
-              <TableCell align="right">a</TableCell>
-              <TableCell align="right">a</TableCell>
-            </TableRow>
 
-        </TableBody>
-      </Table>
-    </TableContainer>
-    </div>
-    <div>
-    <Behavior />
-    </div>
-    </div>
-  );
+  const dataToDisplay = contributions.filter(value => {
+    if(value !== undefined){
+      return value
+    }else {
+      return false
+    }
+  });
+
+  console.log(dataToDisplay);
+    return (
+
+      <div>
+      <div>
+      <TableContainer component={Paper}>
+        <Table  aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Date of Contribution</TableCell>
+              <TableCell align="right">Title of Contribution</TableCell>
+              <TableCell align="right">Members Contributed</TableCell>
+              <TableCell align="right">Amount Contributed</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+          {dataToDisplay.map(data => (
+            <TableRow key={data._id}>
+              <TableCell component="th" scope="row">
+              {new Date(data.updatedAt).toDateString()}
+              </TableCell>
+              <TableCell align="right">{data.title}</TableCell>
+              <TableCell align="right">{data.members.length}</TableCell>
+              <TableCell align="right">{data.amount}</TableCell>
+            </TableRow>
+          ))}
+
+
+
+          </TableBody>
+
+        </Table>
+      </TableContainer>
+      </div>
+
+      </div>
+    );
+
+
 
 };
 
